@@ -1,4 +1,4 @@
-class Api::V1::UsersController <  Api::V1::BaseController
+class Api::V1::UsersController < Api::V1::BaseController
     def register
 
     end
@@ -8,6 +8,6 @@ class Api::V1::UsersController <  Api::V1::BaseController
     end
 
     def find
-        
+
     end
 end
