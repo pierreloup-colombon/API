@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-    devise_for :users
+
+    namespace :api, path: nil, defaults: { format: 'json' } do
+        resources :users, only: :none do
+            collection do
+                post '/register' => 'users#register'
+                post '/login'    => 'users#login'
+                get '/find'      => 'users#find'
+            end
+        end
+    end
+
     # The priority is based upon order of creation: first created -> highest priority.
     # See how all your routes lay out with "rake routes".
 
