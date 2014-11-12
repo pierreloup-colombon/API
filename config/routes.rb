@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
 
     namespace :api, path: nil, defaults: { format: 'json' } do
-        resources :users, only: :none do
-            collection do
-                post '/register' => 'users#register'
-                post '/login'    => 'users#login'
-                get '/find'      => 'users#find'
+        scope module: :v1 do
+
+            resources :users, only: :none do
+                collection do
+                    post '/register' => 'users#register'
+                    post '/login'    => 'users#login'
+                    get '/find'      => 'users#find'
+                end
             end
+
         end
     end
 
