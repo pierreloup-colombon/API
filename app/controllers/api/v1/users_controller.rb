@@ -6,7 +6,7 @@ class Api::V1::UsersController < Api::V1::BaseController
             if @user.save
                 render json: { status: 'ok', token: @user.token }, status: 201
             else
-                error = @user.errors
+                error = @user.errors.messages
                 render json: { status: 'error', error: error }, status: 400
             end
         else
