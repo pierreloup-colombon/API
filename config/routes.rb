@@ -3,11 +3,13 @@ Rails.application.routes.draw do
     namespace :api, path: nil, defaults: { format: 'json' } do
         scope module: :v1 do
 
-            resources :users, only: :none do
+            resources :users, only: [:update] do
                 collection do
                     post '/register' => 'users#register'
                     post '/login'    => 'users#login'
                 end
+
+
             end
 
         end

@@ -21,7 +21,7 @@ class Api::V1::UsersController < Api::V1::BaseController
         if params[:email].present? && params[:password].present?
             @user = User.find_by(email: params[:email])
 
-            if @user && @user.password == params[:password]
+            if @user && @user.valid_password?(params[:password])
                 render json: { status: 'ok', token: @user.token }
             else
                 render_wrong_login
@@ -29,5 +29,27 @@ class Api::V1::UsersController < Api::V1::BaseController
         else
             render_missing_parameters
         end
+    end
+
+    def update
+        if params[:id].to_i == current_user.id
+            current_user.update_attributes(user_params)
+            render nothing: true, status: 204
+        else
+            render_not_allowed
+        end
+    end
+
+    private
+
+    def user_params
+        params.require(:user).permit(
+            :firstname,
+            :lastname,
+            :gender,
+            :birthdate,
+            :phone,
+            :pincode
+        )
     end
 end

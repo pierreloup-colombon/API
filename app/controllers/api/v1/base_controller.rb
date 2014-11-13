@@ -32,4 +32,8 @@ class Api::V1::BaseController < ActionController::Base
     def render_wrong_login
         render json: { status: 'error', msg: 'wrong login' }, status: 400
     end
+
+    def render_not_allowed
+        render json: {status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
+    end
 end
