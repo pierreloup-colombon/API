@@ -1,0 +1,1 @@
+curl -X POST -H 'Content-Type: application/json' localhost:3000/users/strong_login -d '{"email": "'$1'", "password": "'$2'", "pin_code": '$3'}'
