@@ -12,7 +12,7 @@ class Wristband < ActiveRecord::Base
     #  \___\__,_|_|_|_.__/ \__,_|\___|_|\_\___/
 
     before_create :set_unique_token
-    
+
     private
 
     def set_unique_token
