@@ -1,4 +1,7 @@
 class Api::V1::UsersController < Api::V1::BaseController
+
+    skip_before_filter :authenticate, only: [:register, :login]
+
     def register
         if params[:email].present? && params[:password].present?
             @user = User.new(email: params[:email].downcase, password: params[:password])

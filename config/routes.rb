@@ -7,7 +7,6 @@ Rails.application.routes.draw do
                 collection do
                     post '/register' => 'users#register'
                     post '/login'    => 'users#login'
-                    get '/find'      => 'users#find'
                 end
             end
 

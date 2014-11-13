@@ -1,5 +1,5 @@
 class AddExpirationToToken < ActiveRecord::Migration
      def change
-        add_column :tokens, :token_expiration, :date
+        add_column :users, :token_expiration, :date
     end
 end
