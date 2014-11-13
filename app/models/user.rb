@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
 
     before_create :set_unique_token
 
+    def pin_code_is?(pin_code)
+        self.pin_code == pin_code
+    end
 
     private
 

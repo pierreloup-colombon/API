@@ -5,8 +5,9 @@ Rails.application.routes.draw do
 
             resources :users, only: [:update] do
                 collection do
-                    post '/register' => 'users#register'
-                    post '/login'    => 'users#login'
+                    post '/register'     => 'users#register'
+                    post '/login'        => 'users#login'
+                    post '/strong_login' => 'users#strong_login'
                 end
             end
 

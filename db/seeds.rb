@@ -12,11 +12,11 @@
 
 end
 
-u1 = User.create(email: "nicolas@epitech.eu", password: "plopplop")
+u1 = User.create(email: "nicolas@epitech.eu", password: "plopplop", pin_code: 1)
 u1.token = 1
 u1.save!
 
-u2 = User.create(email: "nicolas@gmail.com", password: "plopplop")
+u2 = User.create(email: "nicolas@gmail.com", password: "plopplop", pin_code: 2)
 u2.token = 2
 u2.save!
 

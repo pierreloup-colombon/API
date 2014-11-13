@@ -1,6 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
 
-    skip_before_filter :authenticate, only: [:register, :login]
+    skip_before_filter :authenticate, only: [:register, :login, :strong_login]
 
     def register
         if params[:email].present? && params[:password].present?
@@ -22,6 +22,20 @@ class Api::V1::UsersController < Api::V1::BaseController
             @user = User.find_by(email: params[:email])
 
             if @user && @user.valid_password?(params[:password])
+                render json: { status: 'ok', token: @user.token }
+            else
+                render_wrong_login
+            end
+        else
+            render_missing_parameters
+        end
+    end
+
+    def strong_login
+        if params[:email].present? && params[:password].present? && params[:pin_code].present?
+            @user = User.find_by(email: params[:email])
+
+            if @user && @user.valid_password?(params[:password]) && @user.pin_code_is?(params[:pin_code].to_i)
                 render json: { status: 'ok', token: @user.token }
             else
                 render_wrong_login
