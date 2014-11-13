@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
             :recoverable, :rememberable, :trackable, :validatable
 
     has_many :addresses
-    e
+    
     #            _ _ _                _
     #   ___ __ _| | | |__   __ _  ___| | _____
     #  / __/ _` | | | '_ \ / _` |/ __| |/ / __|
