@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+%w{users wristbands}.each do |table_name|
+
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name}")
+
+end
+
+u1 = User.create(email: "nicolas@epitech.eu", password: "plopplop", pin_code: 1)
+u1.token = 1
+u1.save!
+
+u2 = User.create(email: "nicolas@gmail.com", password: "plopplop", pin_code: 2)
+u2.token = 2
+u2.save!
+
+Wristband.create
+Wristband.create
