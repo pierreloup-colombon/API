@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
             :recoverable, :rememberable, :trackable, :validatable
 
     has_many :addresses
+    has_many :wristbands
 
     #            _ _ _                _
     #   ___ __ _| | | |__   __ _  ___| | _____
