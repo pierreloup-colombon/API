@@ -13,6 +13,10 @@ class Wristband < ActiveRecord::Base
 
     before_create :set_unique_token
 
+    def has_user?
+        user_id != nil
+    end
+
     private
 
     def set_unique_token

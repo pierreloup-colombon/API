@@ -8,10 +8,13 @@ Rails.application.routes.draw do
                     post '/register' => 'users#register'
                     post '/login'    => 'users#login'
                 end
-
-
             end
 
+            resources :wristbands, only: :none do
+                member do
+                    post '/add_to_user/:user_id' => 'wristbands#add_to_user'
+                end
+            end
         end
     end
 

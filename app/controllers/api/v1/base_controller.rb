@@ -34,6 +34,11 @@ class Api::V1::BaseController < ActionController::Base
     end
 
     def render_not_allowed
-        render json: {status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
+        render json: { status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
+    end
+
+    # Wristbands
+    def render_wristband_has_user
+        render json: { status: 'error', msg: 'This wristband already belongs to a user' }, status: 401
     end
 end

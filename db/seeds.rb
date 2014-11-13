@@ -6,7 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.destroy_all
+%w{users wristbands}.each do |table_name|
 
-User.create(email: "nicolas@epitech.eu", password: "plopplop")
-User.create(email: "nicolas@gmail.com", password: "plopplop")
+    ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name}")
+
+end
+
+u1 = User.create(email: "nicolas@epitech.eu", password: "plopplop")
+u1.token = 1
+u1.save!
+
+u2 = User.create(email: "nicolas@gmail.com", password: "plopplop")
+u2.token = 2
+u2.save!
+
+Wristband.create
+Wristband.create
