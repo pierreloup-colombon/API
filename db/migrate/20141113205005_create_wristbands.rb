@@ -11,6 +11,6 @@ class CreateWristbands < ActiveRecord::Migration
           t.timestamps
       end
 
-      add_index :wristbandsg, :token, unique: true
+      add_index :wristbands, :token, unique: true
   end
 end
