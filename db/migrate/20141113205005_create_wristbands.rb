@@ -1,6 +1,5 @@
 class CreateWristbands < ActiveRecord::Migration
   def change
-      drop_table :wristbands
       create_table :wristbands do |t|
           t.string :token, null: false, default: ""
           t.integer :money_source, default: Wristband.money_sources[:wristband_only]
