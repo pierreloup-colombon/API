@@ -1,6 +1,10 @@
 class Api::V1::BaseController < ActionController::Base
     protect_from_forgery with: :null_session
 
+    rescue_from ArgumentError do |e|
+        render json: { status: 'error', message: e.message}, code: :bad_request
+    end
+
     before_action :authenticate
 
     def authenticate
