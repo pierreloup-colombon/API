@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
+    mount_devise_token_auth_for 'User', at: '/users/auth'
 
     namespace :api, path: nil, defaults: { format: 'json' } do
         scope module: :v1 do
-
-            resources :users, only: [:update] do
-                collection do
-                    post '/register'     => 'users#register'
-                    post '/login'        => 'users#login'
-                    post '/strong_login' => 'users#strong_login'
-                end
-            end
 
             resources :wristbands, only: :none do
                 member do

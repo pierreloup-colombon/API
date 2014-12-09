@@ -27,5 +27,15 @@ module OwmaApi
         config.i18n.enforce_available_locales = true # force locale
         config.i18n.available_locales = [:fr]
         config.i18n.default_locale = :fr
+
+        config.middleware.use Rack::Cors do
+            allow do
+                origins '*'
+                resource '*',
+                 :headers => :any,
+                 :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+                 :methods => [:get, :post, :options, :delete, :put]
+            end
+        end
     end
 end
