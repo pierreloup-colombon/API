@@ -1,24 +1,9 @@
 class Api::V1::BaseController < ActionController::Base
+    include DeviseTokenAuth::Concerns::SetUserByToken
     protect_from_forgery with: :null_session
 
     rescue_from ArgumentError do |e|
         render json: { status: 'error', message: e.message}, code: :bad_request
-    end
-
-    before_action :authenticate
-
-    def authenticate
-        authenticate_token || render_unauthorized
-    end
-
-    def authenticate_token
-        authenticate_with_http_token do |token, options|
-            @current_user = User.find_by(token: token)
-        end
-    end
-
-    def current_user
-        @current_user
     end
 
     def render_bad_parameters

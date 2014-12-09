@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :api, path: nil, defaults: { format: 'json' } do
         scope module: :v1 do
 
+            get '/users/test' => 'test#index'
             resources :wristbands, only: :none do
                 member do
                     post '/add_to_user/:user_id' => 'wristbands#add_to_user'
