@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'omniauth'
 gem 'devise_token_auth'
 gem 'figaro'
+gem 'cancancan'
 
 gem 'puma'
 gem 'rack-cors', require: 'rack/cors'
