@@ -1,9 +1,14 @@
 class Api::V1::BaseController < ActionController::Base
     include DeviseTokenAuth::Concerns::SetUserByToken
+
+    rescue_from CanCan::AccessDenied do |exception|
+        render json: { status: 'error', message: 'unauthorized' }, status: 401
+    end
+
     protect_from_forgery with: :null_session
 
     rescue_from ArgumentError do |e|
-        render json: { status: 'error', message: e.message}, code: :bad_request
+        render json: { status: 'error', message: e.message}, status: :bad_request
     end
 
     def render_bad_parameters

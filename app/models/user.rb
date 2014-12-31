@@ -16,5 +16,6 @@ class User < ActiveRecord::Base
 
     def add_default_role
         self.role = Role.find_or_create_by(name: 'default')
+        save!
     end
 end
