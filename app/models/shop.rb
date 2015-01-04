@@ -22,5 +22,4 @@ class Shop < ActiveRecord::Base
       errors.add(:owner_id, "doesn't exists.")
     end
   end
-
 end
