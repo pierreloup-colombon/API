@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/owma/API.svg?branch=develop)](https://travis-ci.org/owma/API)
