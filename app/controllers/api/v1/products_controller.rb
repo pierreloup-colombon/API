@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < Api::V1::BaseController
-  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  # before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   before_action :set_product, only: [:update, :show, :destroy]
   before_action :set_shop, only: [:create]
@@ -8,6 +8,17 @@ class Api::V1::ProductsController < Api::V1::BaseController
     @products = Product.where(shop_id: params[:shop_id])
 
     render json: @products
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.shop_id = params[:shop_id]
+
+    if @product.save
+      render_resource_successed(@product)
+    else
+      render_resource_failed(@product)
+    end
   end
 
   def update
