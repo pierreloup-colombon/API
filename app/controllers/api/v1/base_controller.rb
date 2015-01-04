@@ -6,6 +6,7 @@ class Api::V1::BaseController < ActionController::Base
     end
 
     protect_from_forgery with: :null_session
+    respond_to :json
 
     rescue_from ArgumentError do |e|
         render json: { status: 'error', message: e.message}, status: :bad_request
@@ -29,6 +30,21 @@ class Api::V1::BaseController < ActionController::Base
 
     def render_not_allowed
         render json: { status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
+    end
+
+    def render_resource_successed(resource)
+        render json: {
+            status: 'success',
+            data: resource.as_json
+        }
+    end
+
+    def render_resource_failed(resource)
+        render json: {
+            status: 'error',
+            data: resource,
+            errors: resource.errors.to_hash.merge(full_messages: resource.errors.full_messages)
+        }, status: 403
     end
 
     # Wristbands

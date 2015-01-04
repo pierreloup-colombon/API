@@ -1,0 +1,1 @@
+curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' http://localhost:3000/events -d '{ "event": { "name": "EVENT NAME", "description": "EVENT DESCRIPTION", "date": "01/02/1991"} }'

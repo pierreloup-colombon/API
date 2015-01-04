@@ -5,6 +5,9 @@ Rails.application.routes.draw do
         scope module: :v1 do
 
             get '/users/test' => 'test#index'
+
+            resources :events
+
             resources :wristbands, only: :none do
                 member do
                     post '/add_to_user/:user_id' => 'wristbands#add_to_user'
