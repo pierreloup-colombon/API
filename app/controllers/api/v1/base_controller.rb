@@ -32,6 +32,13 @@ class Api::V1::BaseController < ActionController::Base
         render json: { status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
     end
 
+    def render_nested_resource_doesnt_exists(resource_name)
+        render json: {
+            status: 'error',
+            errors: ["#{resource_name} doesn't exists."]
+        }
+    end
+
     def render_resource_successed(resource)
         render json: {
             status: 'success',

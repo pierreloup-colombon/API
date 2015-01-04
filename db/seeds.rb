@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-%w{users wristbands roles events}.each do |table_name|
+%w{users wristbands roles events shops}.each do |table_name|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name}")
 end
 
@@ -26,4 +26,8 @@ Wristband.create
 
 2.times { |u|
     Event.create(name: "event #{u}", description: "description event #{u}", date: Time.at(rand * Time.now.to_f))
+}
+
+2.times { |u|
+    Shop.create(name: "event #{u}", description: "description event #{u}", event_id: u + 1, owner_id: 1)
 }
