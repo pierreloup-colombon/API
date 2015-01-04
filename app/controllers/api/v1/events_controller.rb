@@ -1,12 +1,16 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
   before_action :authenticate_user!, only: [:create, :update]
-  before_action :set_event, only: [:update] #[:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:update, :show] #[:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
 
     render json: @events.as_json(except: [:created_at, :updated_at])
+  end
+
+  def show
+    render json: @event.as_json(except: [:created_at, :updated_at])
   end
 
   def create
