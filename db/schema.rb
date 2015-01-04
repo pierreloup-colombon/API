@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231180054) do
+ActiveRecord::Schema.define(version: 20150104142727) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20141231180054) do
   create_table "events", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name",        limit: 512
+    t.text     "description"
+    t.datetime "date"
   end
 
   create_table "product_categories", force: true do |t|
