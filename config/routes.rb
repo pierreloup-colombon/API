@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
             get '/users/test' => 'test#index'
 
-            resources :events
+            resources :events do
+                resources :shops, only: [:index, :create]
+            end
 
             resources :wristbands, only: :none do
                 member do
