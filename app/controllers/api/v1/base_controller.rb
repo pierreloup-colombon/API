@@ -31,6 +31,21 @@ class Api::V1::BaseController < ActionController::Base
         render json: { status: 'error', msg: 'You are not allowed to execute this action'}, status: 401
     end
 
+    def render_resource_created(resource)
+        render json: {
+        status: 'success',
+        data: resource.as_json,
+        }
+    end
+
+    def render_resource_creation_failed(resource)
+        render json: {
+            status: 'error',
+            data:   resource,
+            errors: resource.errors.to_hash.merge(full_messages: resource.errors.full_messages)
+        }, status: 403
+    end
+
     # Wristbands
     def render_wristband_has_user
         render json: { status: 'error', msg: 'This wristband already belongs to a user' }, status: 401
