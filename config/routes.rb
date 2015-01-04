@@ -14,6 +14,8 @@ Rails.application.routes.draw do
                 resources :products, only: [:index, :create]
             end
 
+            resources :products, only: [:update]
+
             resources :wristbands, only: :none do
                 member do
                     post '/add_to_user/:user_id' => 'wristbands#add_to_user'

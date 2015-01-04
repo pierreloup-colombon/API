@@ -33,5 +33,5 @@ Wristband.create
 }
 
 2.times { |u|
-    Product.create(shop_id: 1)
+    Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 1)
 }

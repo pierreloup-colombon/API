@@ -1,4 +1,4 @@
-class Api::V1::ProductsController < ApplicationController
+class Api::V1::ProductsController < Api::V1::BaseController
   before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   before_action :set_product, only: [:update, :show, :destroy]
@@ -8,6 +8,14 @@ class Api::V1::ProductsController < ApplicationController
     @products = Product.where(shop_id: params[:shop_id])
 
     render json: @products
+  end
+
+  def update
+    if @product.update_attributes(product_params)
+      render_resource_successed(@product)
+    else
+      render_resource_failed(@product)
+    end
   end
 
   private
@@ -22,5 +30,15 @@ class Api::V1::ProductsController < ApplicationController
     if @shop.nil?
       render_nested_resource_doesnt_exists("Shop #{params[:shop_id]}")
     end
+  end
+
+  def product_params
+    params.require(:product).permit(
+      :name,
+      :description,
+      :quantity,
+      :price,
+      :shop_id,
+    )
   end
 end
