@@ -1,0 +1,1 @@
+curl -XPATCH -H 'Accept: application/json' -H 'Content-Type: application/json' http://localhost:3000/events/$1 -d '{ "event": { "name": "EVENT NAME EDIT", "description": "EVENT DESCRIPTION EDIT", "date": "01/02/2015"} }'

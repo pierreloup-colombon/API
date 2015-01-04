@@ -1,6 +1,7 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
-  before_filter :authenticate_user!, only: [:create]
+  before_action :authenticate_user!, only: [:create, :update]
+  before_action :set_event, only: [:update] #[:show, :edit, :update, :destroy]
 
   def index
     @events = Event.all
@@ -11,13 +12,25 @@ class Api::V1::EventsController < Api::V1::BaseController
   def create
     @event = Event.new(event_params)
     if @event.save
-      render_resource_created(@event)
+      render_resource_successed(@event)
     else
-      render_resource_creation_failed(@event)
+      render_resource_failed(@event)
+    end
+  end
+
+  def update
+    if @event.update(event_params)
+      render_resource_successed(@event)
+    else
+      render_resource_failed(@event)
     end
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(
