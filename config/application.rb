@@ -28,6 +28,8 @@ module OwmaApi
         config.i18n.available_locales = [:fr]
         config.i18n.default_locale = :fr
 
+        config.eager_load_paths += %W(#{config.root}/app/controllers/api/v1/concerns)
+
         config.middleware.use Rack::Cors do
             allow do
                 origins '*'
