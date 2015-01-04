@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     @user = user || User.new(role_id: 1)
+    @user = User.first
     send(@user.role.name.downcase.to_sym)
 
     # Define abilities for the passed in user here. For example:
@@ -37,6 +38,10 @@ class Ability
   def default
     can [:destroy, :update], Shop do |shop|
       shop.owner_id == @user.id
+    end
+
+    can [:destroy, :update], Product do |product|
+      product.shop.owner_id == @user.id
     end
   end
 end

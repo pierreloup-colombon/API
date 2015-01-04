@@ -10,7 +10,11 @@ Rails.application.routes.draw do
                 resources :shops, only: [:index, :create]
             end
 
-            resources :shops, only: [:destroy, :update]
+            resources :shops, only: [:destroy, :update] do
+                resources :products, only: [:index, :create]
+            end
+
+            resources :products, only: [:destroy, :update]
 
             resources :wristbands, only: :none do
                 member do
