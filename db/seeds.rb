@@ -29,5 +29,5 @@ Wristband.create
 }
 
 2.times { |u|
-    Shop.create(event_id: u + 1)
+    Shop.create(name: "event #{u}", description: "description event #{u}", event_id: u + 1, owner_id: 1)
 }

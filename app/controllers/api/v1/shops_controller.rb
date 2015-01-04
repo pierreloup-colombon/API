@@ -38,7 +38,8 @@ class Api::V1::ShopsController < Api::V1::BaseController
   def shop_params
     params.require(:shop).permit(
       :name,
-      :description
+      :description,
+      :owner_id
     )
   end
 end

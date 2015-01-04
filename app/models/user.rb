@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     has_many :addresses
     has_many :wristbands
     belongs_to :role
+    has_many :shops, foreign_key: 'owner_id'
 
     before_create :skip_confirmation!
     after_create :add_default_role

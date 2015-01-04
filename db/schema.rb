@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104205131) do
+ActiveRecord::Schema.define(version: 20150104205348) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 20150104205131) do
     t.string   "name"
     t.text     "description"
     t.integer  "status",      default: 0
+    t.integer  "owner_id"
   end
+
+  add_index "shops", ["owner_id"], name: "index_shops_on_owner_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider",                            null: false
