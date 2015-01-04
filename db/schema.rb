@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104225846) do
+ActiveRecord::Schema.define(version: 20150104231526) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150104225846) do
     t.text     "description"
     t.float    "price",       limit: 24, default: 0.0
     t.integer  "quantity",               default: 0
+    t.integer  "status",                 default: 0
   end
 
   create_table "roles", force: true do |t|

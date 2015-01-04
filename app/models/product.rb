@@ -5,6 +5,8 @@ class Product < ActiveRecord::Base
 
   validate :shop_existence, on: [:create]
 
+  include Status
+
   belongs_to :shop
 
   private

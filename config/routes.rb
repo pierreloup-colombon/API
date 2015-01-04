@@ -14,7 +14,7 @@ Rails.application.routes.draw do
                 resources :products, only: [:index, :create]
             end
 
-            resources :products, only: [:update]
+            resources :products, only: [:destroy, :update]
 
             resources :wristbands, only: :none do
                 member do

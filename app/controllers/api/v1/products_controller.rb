@@ -4,6 +4,8 @@ class Api::V1::ProductsController < Api::V1::BaseController
   before_action :set_product, only: [:update, :show, :destroy]
   before_action :set_shop, only: [:create]
 
+  include DestroyResourceWithStatus
+
   def index
     @products = Product.where(shop_id: params[:shop_id])
 
@@ -27,6 +29,10 @@ class Api::V1::ProductsController < Api::V1::BaseController
     else
       render_resource_failed(@product)
     end
+  end
+
+  def destroy
+    destroy_resource(@product)
   end
 
   private
