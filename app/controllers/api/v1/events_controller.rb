@@ -1,7 +1,7 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
-  before_action :authenticate_user!, only: [:create, :update]
-  before_action :set_event, only: [:update, :show] #[:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :set_event, only: [:update, :show, :destroy]
 
   def index
     @events = Event.all
@@ -29,6 +29,17 @@ class Api::V1::EventsController < Api::V1::BaseController
       render_resource_failed(@event)
     end
   end
+
+  def destroy
+    @event.status = Event.statuses[:deleted]
+
+    if @event.save
+      head :no_content
+    else
+      render_resource_failed(@event)
+    end
+  end
+
 
   private
 

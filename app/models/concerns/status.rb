@@ -4,6 +4,6 @@ module Status
   extend ActiveSupport::Concern
 
   included do
-    enum status: [:active, :disable]
+    enum status: [:actived, :disabled, :deleted]
   end
 end
