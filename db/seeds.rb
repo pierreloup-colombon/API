@@ -28,10 +28,13 @@ Wristband.create
     Event.create(name: "event #{u}", description: "description event #{u}", date: Time.at(rand * Time.now.to_f))
 }
 
-2.times { |u|
-    Shop.create(name: "event #{u}", description: "description shop #{u}", event_id: u + 1, owner_id: 1)
-}
+u = 1
+s1 = Shop.create(name: "event #{u}", description: "description shop #{u}", event_id: u + 1, owner_id: 1)
+u = 2
+s2 = Shop.create(name: "event #{u}", description: "description shop #{u}", event_id: u + 1, owner_id: 2)
 
-2.times { |u|
-    Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 1)
-}
+u = 1
+p1 = Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 1)
+u = 2
+p2 = Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 2)
+

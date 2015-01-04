@@ -24,6 +24,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def update
+    authorize! :update, @product
     if @product.update_attributes(product_params)
       render_resource_successed(@product)
     else
@@ -32,6 +33,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
   end
 
   def destroy
+    authorize! :destroy, @product
     destroy_resource(@product)
   end
 
