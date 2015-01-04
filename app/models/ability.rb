@@ -2,8 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    @user = user || User.new
-
+    @user = user || User.new(role_id: 1)
     send(@user.role.name.downcase.to_sym)
 
     # Define abilities for the passed in user here. For example:
@@ -36,6 +35,8 @@ class Ability
 
 
   def default
-    # can :index, :test
+    can :destroy, Shop do |shop|
+      shop.owner_id == @user.id
+    end
   end
 end
