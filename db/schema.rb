@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104203009) do
+ActiveRecord::Schema.define(version: 20150104205131) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150104203009) do
     t.integer  "event_id"
     t.string   "name"
     t.text     "description"
+    t.integer  "status",      default: 0
   end
 
   create_table "users", force: true do |t|
