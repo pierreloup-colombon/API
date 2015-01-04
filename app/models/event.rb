@@ -4,4 +4,6 @@ class Event < ActiveRecord::Base
   validates :date,        presence: true
 
   include Status
+
+  has_many :shops
 end
