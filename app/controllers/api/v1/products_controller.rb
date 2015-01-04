@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < Api::V1::BaseController
-  # before_action :authenticate_user!, only: [:create, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   before_action :set_product, only: [:update, :show, :destroy]
   before_action :set_shop, only: [:create]
