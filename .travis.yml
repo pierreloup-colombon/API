@@ -6,7 +6,6 @@ rvm:
   - 2.2
 
 env:
-  - DB=sqlite
   - DB=mysql
 
 script:
