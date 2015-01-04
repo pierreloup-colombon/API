@@ -1,0 +1,2 @@
+#!/bin/sh
+curl -XPATCH -H 'Accept: application/json' -H 'Content-Type: application/json' http://localhost:3000/shops/$1 -d '{ "shop": { "name": "SHOP NAME EDIT", "description": "SHOP DESCRIPTION EDIT" } }'

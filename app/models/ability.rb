@@ -35,7 +35,7 @@ class Ability
 
 
   def default
-    can :destroy, Shop do |shop|
+    can [:destroy, :update], Shop do |shop|
       shop.owner_id == @user.id
     end
   end
