@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
             get '/users/test' => 'test#index'
 
+            resources :users, only: [:index]
+
             resources :events do
                 resources :shops, only: [:index, :create]
             end
