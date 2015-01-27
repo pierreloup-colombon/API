@@ -37,4 +37,3 @@ u = 1
 p1 = Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 1)
 u = 2
 p2 = Product.create(name: "product #{u}", description: "description product #{u}", quantity: 0, price: 5.50, shop_id: 2)
-

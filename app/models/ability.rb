@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     @user = user || User.new(role_id: 1)
     @user = User.first
+    can :manage, :all
     send(@user.role.name.downcase.to_sym)
 
     # Define abilities for the passed in user here. For example:

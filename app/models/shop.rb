@@ -10,6 +10,8 @@ class Shop < ActiveRecord::Base
   belongs_to :user
   has_many :products
 
+  default_scope { where('status != ?', Shop.statuses[:deleted]) }
+
   private
 
   def owner_existence
