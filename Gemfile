@@ -32,6 +32,11 @@ gem 'rack-cors', require: 'rack/cors'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development do
 	gem 'spring'
+	gem 'capistrano'
+	gem 'capistrano-puma', require: false
+	gem 'capistrano-rails',   '~> 1.1', require: false
+	gem 'capistrano-bundler', '~> 1.1', require: false
+	gem 'capistrano-rvm',   '~> 0.1', require: false
 end
 
 group :development, :test do
