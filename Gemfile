@@ -33,7 +33,7 @@ gem 'rack-cors', require: 'rack/cors'
 group :development do
 	gem 'spring'
 	gem 'capistrano'
-	gem 'capistrano-puma', require: false
+	gem 'capistrano3-puma', require: false
 	gem 'capistrano-rails',   '~> 1.1', require: false
 	gem 'capistrano-bundler', '~> 1.1', require: false
 	gem 'capistrano-rvm',   '~> 0.1', require: false
