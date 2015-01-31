@@ -57,6 +57,15 @@ namespace :puma do
 
   before :start, :make_dirs
 end
+#
+# namespace :env do
+#   desc 'reload env'
+#   task :reload do
+#     on roles(:app) do
+#       execute 'source /home/deploy/.owma-env'
+#     end
+#   end
+# end
 
 namespace :deploy do
   desc 'Initial Deploy'
@@ -74,6 +83,7 @@ namespace :deploy do
     end
   end
 
+  # before :deploy,       'env:reload'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
