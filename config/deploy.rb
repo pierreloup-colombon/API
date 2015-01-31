@@ -3,14 +3,13 @@ lock '3.3.5'
 
 set :application, 'owma-api'
 set :repo_url, 'git@github.com:owma/API.git'
-set :deploy_to, '/home/admin/owma-api'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 set :branch, 'develop'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/admin/owma-api'
+set :deploy_to, '/home/deploy/owma-api'
 
 # Default value for :scm is :git
 set :scm, :git
