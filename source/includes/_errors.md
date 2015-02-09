@@ -1,20 +1,68 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+> 400 (Bad request)
 
-The Kittn API uses the following error codes:
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
 
+{
+    "reason": "......."
+}
+```
 
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slown down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
+> 401 (Forbidden)
+
+```http
+HTTP/1.1 401 Forbidden
+Content-Type: application/json
+
+{
+    "reason": "......."
+}
+```
+
+> 200 (OK) with errors (only known=documented user codes)
+<br />
+> `special meaning`
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"data": null,
+	"errors": {
+		"error_email_taken": ["email is already taken"]
+	}
+}
+```
+
+> `refers to username with server side error reason (to show to the user)`
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"data": null,
+	"errors": {
+		"error_username": ["use numbers and letters", "too short"]
+	}
+}
+```
+
+> 401 (Unauthorized)
+
+```http
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+
+{
+	"errors": {
+		"error_session": ["not logged in"],
+		"error_session_expired":[]
+		"error_not_authorized":[]
+	}
+}
+```
