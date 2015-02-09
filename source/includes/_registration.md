@@ -1,14 +1,16 @@
+# Registration
+
 ## With Email
 
 > Request JSON
 
 ```http
-POST /users/auth/sign_in HTTP/1.1
+POST /users/auth HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "foo@bar.com",
-  "password": "aze"
+	"email": "foo@bar.com",
+	"password": "aze"
 }
 ```
 
@@ -27,8 +29,10 @@ Content-Type: application/json
 ```
 
 <aside>
-<b>POST</b> <i>/users/auth/sign_in</i>
+<b>POST</b> <i>/users/auth</i>
 </aside>
+
+You'll receive the authentication informations in the header of the server response.
 
 ## With Facebook
 
@@ -39,7 +43,7 @@ GET /auth/facebook_access_token/callback HTTP/1.1
 Content-Type: application/json
 
 {
-  "access_token": "azoepazeqsd"
+	"acess_token": "azeaze"
 }
 ```
 
@@ -56,7 +60,8 @@ Content-Type: application/json
   }
 }
 ```
-
 <aside>
 <b>POST</b> <i>/users/auth/facebook/callback</i>
 </aside>
+
+You'll receive the authentication informations in the header of the server response.
