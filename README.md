@@ -3,3 +3,5 @@
 [![Test Coverage](https://codeclimate.com/github/owma/API/badges/coverage.svg)](https://codeclimate.com/github/owma/API)
 
 * DON'T PUSH ANYTHING ON THE DEVELOP / MASTER BRANCH => PULL REQUEST FIRST
+
+[API Documentation](http://owma.github.io/API/)
