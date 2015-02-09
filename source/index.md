@@ -8,6 +8,9 @@ toc_footers:
 
 includes:
   - authentication
+  - authentication_login
+  - authentication_registration
+  - users
   - errors
 
 search: true
