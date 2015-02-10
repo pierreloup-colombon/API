@@ -27,12 +27,15 @@ ActiveRecord::Schema.define(version: 20150210165443) do
   create_table "baskets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",        default: 0
+    t.integer  "status",                default: 0
     t.integer  "shop_id"
-    t.integer  "user_id"
-    t.integer  "wristbrand_id"
+    t.integer  "vendor_id",                           null: false
+    t.integer  "buyer_id"
+    t.float    "total",      limit: 24, default: 0.0
     t.text     "products"
   end
+
+  add_index "baskets", ["shop_id"], name: "index_baskets_on_shop_id", using: :btree
 
   create_table "events", force: true do |t|
     t.datetime "created_at"
