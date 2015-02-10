@@ -8,7 +8,9 @@ class Shop < ActiveRecord::Base
   
   belongs_to :event
   belongs_to :user
+
   has_many :products
+  has_many :baskets
 
   default_scope { where('status != ?', Shop.statuses[:deleted]) }
 
