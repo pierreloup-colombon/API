@@ -18,6 +18,10 @@ Rails.application.routes.draw do
                 resources :baskets, only: [:create]
             end
 
+            resources :baskets, only: :none do
+              put '/pay' => 'baskets#pay'
+            end
+
             resources :products, only: [:destroy, :update]
 
             resources :wristbands, only: :none do
