@@ -11,6 +11,9 @@ includes:
   - login
   - registration
   - users
+  - baskets
+  - baskets_create
+  - baskets_pay
   - errors
 
 search: true
