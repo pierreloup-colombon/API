@@ -56,8 +56,7 @@ class Api::V1::ProductsController < Api::V1::BaseController
       :name,
       :description,
       :quantity,
-      :price,
-      :shop_id,
+      :price
     )
   end
 end
