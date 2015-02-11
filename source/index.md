@@ -14,6 +14,8 @@ includes:
   - baskets
   - baskets_create
   - baskets_pay
+  - wallets
+  - wristbands
   - errors
 
 search: true
