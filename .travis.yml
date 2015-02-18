@@ -6,12 +6,12 @@ rvm:
   - 2.2
 
 env:
-  - DB=mysql
+  - DB=postgresql
 
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rake
-before_script:
-  - cp config/database.travis.yml config/database.yml
-  - mysql -e 'create database `owma-api_test`'
+
+addons:
+  postgresql: "9.3"
