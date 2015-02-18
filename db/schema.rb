@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210165443) do
+ActiveRecord::Schema.define(version: 20150210180311) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -110,6 +110,13 @@ ActiveRecord::Schema.define(version: 20150210165443) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
+
+  create_table "wallets", force: true do |t|
+    t.integer  "user_id"
+    t.float    "amount",     limit: 24, default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wristbands", force: true do |t|
     t.string   "token",         default: "", null: false
