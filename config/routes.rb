@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
             resources :shops, only: [:destroy, :update] do
                 resources :products, only: [:index, :create]
+
+                resources :baskets, only: [:create]
+            end
+
+            resources :baskets, only: :none do
+              put '/pay' => 'baskets#pay'
             end
 
             resources :products, only: [:destroy, :update]

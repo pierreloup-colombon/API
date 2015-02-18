@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
     belongs_to :role
     has_many :shops, foreign_key: 'owner_id'
 
+    has_many :basket_payed, class: Basket, foreign_key: 'buyer_id'
+    has_many :check_out_basket, class: Basket, foreign_key: 'vendor_id'
+
     before_create :skip_confirmation!
     after_create :add_default_role
 
