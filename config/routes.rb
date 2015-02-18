@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 
     namespace :api, path: nil, defaults: { format: 'json' } do
         scope module: :v1 do
-
-            get '/users/test' => 'test#index'
-
             resources :users, only: [:index]
 
             resources :events do
