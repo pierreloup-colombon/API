@@ -9,7 +9,8 @@ env:
   - DB=postgresql
 
 script:
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - RAILS_ENV=test rake db:create
+  - RAILS_ENV=test bundle exec rake --trace db:migrate
   - bundle exec rake db:test:prepare
   - bundle exec rake
 
