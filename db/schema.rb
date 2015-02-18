@@ -13,6 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20150218183302) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
+
   create_table "addresses", force: true do |t|
     t.string   "street"
     t.string   "zip"
@@ -27,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150218183302) do
   create_table "baskets", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",                default: 0
+    t.integer  "status",     default: 0
     t.integer  "shop_id"
-    t.integer  "vendor_id",                           null: false
+    t.integer  "vendor_id",                null: false
     t.integer  "buyer_id"
-    t.float    "total",      limit: 24, default: 0.0
+    t.float    "total",      default: 0.0
     t.text     "products"
   end
 
@@ -57,9 +61,9 @@ ActiveRecord::Schema.define(version: 20150218183302) do
     t.integer  "shop_id"
     t.string   "name"
     t.text     "description"
-    t.float    "price",       limit: 24, default: 0.0
-    t.integer  "quantity",               default: 0
-    t.integer  "status",                 default: 0
+    t.float    "price",       default: 0.0
+    t.integer  "quantity",    default: 0
+    t.integer  "status",      default: 0
   end
 
   create_table "roles", force: true do |t|
@@ -113,19 +117,18 @@ ActiveRecord::Schema.define(version: 20150218183302) do
 
   create_table "wallets", force: true do |t|
     t.integer  "user_id"
-    t.float    "amount",     limit: 24, default: 0.0
+    t.float    "amount",     default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "wallets", ["user_id"], name: "index_wallets_on_user_id", using: :btree
 
-  create_table "wristbands", force: true do |t|
-    t.integer  "money_source",  default: 0
-    t.integer  "status",        default: 0
-    t.string   "serial_number", default: ""
-    t.integer  "amount",        default: 0
-    t.integer  "currency",      default: 0
+  create_table "wristbands", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "money_source", default: 0
+    t.integer  "status",       default: 0
+    t.integer  "amount",       default: 0
+    t.integer  "currency",     default: 0
     t.integer  "wallet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
