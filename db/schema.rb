@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210180311) do
+ActiveRecord::Schema.define(version: 20150218183302) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -118,18 +118,19 @@ ActiveRecord::Schema.define(version: 20150210180311) do
     t.datetime "updated_at"
   end
 
+  add_index "wallets", ["user_id"], name: "index_wallets_on_user_id", using: :btree
+
   create_table "wristbands", force: true do |t|
-    t.string   "token",         default: "", null: false
-    t.integer  "money_source"
+    t.integer  "money_source",  default: 0
     t.integer  "status",        default: 0
     t.string   "serial_number", default: ""
     t.integer  "amount",        default: 0
     t.integer  "currency",      default: 0
-    t.integer  "user_id"
+    t.integer  "wallet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "wristbands", ["token"], name: "index_wristbands_on_token", unique: true, using: :btree
+  add_index "wristbands", ["wallet_id"], name: "index_wristbands_on_wallet_id", using: :btree
 
 end
