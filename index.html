@@ -226,6 +226,26 @@
 
           <h1 id="users">Users</h1>
 
+          <h2 id="add-wristband">Add Wristband</h2>
+
+<blockquote>
+<p>Request JSON</p>
+</blockquote>
+<pre><code class="highlight http"><span class="nf">POST</span> <span class="nn">/users/:id/wristbands/:wristband_id</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Response JSON</p>
+</blockquote>
+<pre><code class="highlight http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<aside>
+<b>POST</b> <i>/users/:id/wristbands/:wristband_id</i>
+</aside>
+
           <h1 id="baskets">Baskets</h1>
 
           <h2 id="create">Create</h2>
@@ -293,6 +313,32 @@
           <h1 id="wallets">Wallets</h1>
 
           <h1 id="wristbands">Wristbands</h1>
+
+          <h2 id="create">Create</h2>
+
+<blockquote>
+<p>Request JSON</p>
+</blockquote>
+<pre><code class="highlight http"><span class="nf">POST</span> <span class="nn">/wristbands</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+</code></pre>
+
+<blockquote>
+<p>Response JSON</p>
+</blockquote>
+<pre><code class="highlight http"><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"wristband"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AAA..."</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<aside>
+<b>POST</b> <i>/wristbands</i>
+</aside>
 
           <h1 id="errors">Errors</h1>
 
