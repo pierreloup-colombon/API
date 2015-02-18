@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
       self.pin_code == pin_code
     end
 
+    def add_wristband(wristband)
+      self.wallet.wristbands << wristband
+    end
+
     def wristbands
       Wristband.joins(wallet: [:user]).where(users: {id: self.id })
     end

@@ -4,4 +4,19 @@ class Api::V1::WristbandsController < Api::V1::BaseController
   def create
     render json: Wristband.create.as_json(root: true, only: [ :id ])
   end
+
+  def add_to_user
+    @user = current_user || @user = User.find(params[:user_id])
+
+    @wristband = Wristband.find(params[:wristband_id])
+
+    if !@wristband.user?
+      @user.add_wristband(@wristband)
+    else
+      render json: { status: 'error', msg: 'Wristband already assigned' }, status: 400
+      return
+    end
+
+    render nothing: true, status: :ok
+  end
 end

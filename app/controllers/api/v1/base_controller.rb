@@ -13,7 +13,7 @@ class Api::V1::BaseController < ActionController::Base
     end
 
     def render_bad_parameters
-        render json: { status: 'error', msg: 'bad parameters' }
+        render json: { status: 'error', msg: 'bad parameters' }, status: 400
     end
 
     def render_unauthorized
