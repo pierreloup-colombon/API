@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       resources :products, only: [:destroy, :update]
 
       resources :wristbands, only: [ :create ]
+
+      resources :tickets
     end
   end
 
