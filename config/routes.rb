@@ -1,4 +1,36 @@
 Rails.application.routes.draw do
+  namespace :api do
+  namespace :v1 do
+    get 'activities/index'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'activities/create'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'activities/destroy'
+    end
+  end
+
+  namespace :api do
+  namespace :v1 do
+    get 'activities/update'
+    end
+  end
+
+  get 'activities/new'
+
+  get 'activities/index'
+
+  get 'activities/show'
+
+  get 'activities/destroy'
+
   mount_devise_token_auth_for 'User', at: '/users/auth'
 
   namespace :api, path: nil, defaults: { format: 'json' } do
