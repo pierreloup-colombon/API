@@ -1,0 +1,1 @@
+curl -X POST -H Content-Type: application/json localhost:3000/tickets -d '{{"tickets": {"name": "'$1'", "description": "'$2'", "price": "'$3'", "currency": "'$4'", "places": "'$5'", "activitie_id": "'$6'"}}'
