@@ -1,37 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api do
-  namespace :v1 do
-    get 'activities/index'
-    end
-  end
-
-  namespace :api do
-  namespace :v1 do
-    get 'activities/create'
-    end
-  end
-
-  namespace :api do
-  namespace :v1 do
-    get 'activities/destroy'
-    end
-  end
-
-  namespace :api do
-  namespace :v1 do
-    get 'activities/update'
-    end
-  end
-
-  get 'activities/new'
-
-  get 'activities/index'
-
-  get 'activities/show'
-
-  get 'activities/destroy'
-
-  mount_devise_token_auth_for 'User', at: '/users/auth'
+   mount_devise_token_auth_for 'User', at: '/users/auth'
 
   namespace :api, path: nil, defaults: { format: 'json' } do
     scope module: :v1 do
@@ -56,7 +24,10 @@ Rails.application.routes.draw do
       resources :products, only: [:destroy, :update]
 
       resources :wristbands, only: [ :create ]
+
+      resources :activities, only: [ :create, :update, :destroy, :index]
     end
+    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
