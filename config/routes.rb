@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     scope module: :v1 do
       resources :users, only: [:index] do
         post '/wristband/:wristband_id' => 'wristbands#add_to_user'
+        post '/pincode/:pin_code' => 'user#add_pin_code'
+        delete '/pincode/' => 'user#destroy_pin_code'
       end
 
       resources :events do
@@ -31,7 +33,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

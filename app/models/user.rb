@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
       self.pin_code == pin_code
     end
 
+    def add_pin_code(pin_code)
+      self.pin_code = pin_code
+    end
+
+    def destroy_pin_code
+      self.pin_code = nil
+    end
+
     def add_wristband(wristband)
       self.wallet.wristbands << wristband
     end
