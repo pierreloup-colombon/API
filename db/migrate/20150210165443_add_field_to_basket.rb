@@ -1,4 +1,4 @@
-class AddFieldToBasket < ActiveRecord::Migration
+Plass AddFieldToBasket < ActiveRecord::Migration
   def change
     change_table :baskets do |t|
       t.integer :status, default: 0
