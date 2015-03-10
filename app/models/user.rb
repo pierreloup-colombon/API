@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
     end
 
     def add_pin_code(pin_code)
-      self.pin_code = pin_code
+      if self.pin_code == nil
+        self.pin_code = pin_code
+      end
     end
 
     def destroy_pin_code
